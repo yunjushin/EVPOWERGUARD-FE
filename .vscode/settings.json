@@ -1,0 +1,15 @@
+{
+  "editor.tokenColorCustomizations": {
+    "comments": "#a0a0a0" // 주석 색상 지정
+  },
+  "editor.formatOnSave": true, // 저장 시 코드 자동정렬
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact" // jsx에서 html 태그 자동완성이 안 됐었는데, 이 부분 추가해서 해결했다.
+  },
+  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.singleQuote": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
