@@ -9,13 +9,13 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 const options = [
-  { id: 1, name: 'supex' },
-  { id: 2, name: 'bundang' },
+  { stationId: 11111, stationName: 'supex station', rgstDate: '20220513' },
+  { stationId: 22222, stationName: 'bundang station', rgstDate: '20220512' },
 ];
 
-function LocationList({ isShow, setVisible, onClickOk }) {
+function StationList({ isShow, setVisible, onClickOk }) {
   const radioGroupRef = React.useRef(null);
-  const locationRef = React.useRef(null);
+  const stationRef = React.useRef({});
 
   const handleEntering = () => {
     if (radioGroupRef.current != null) {
@@ -23,9 +23,14 @@ function LocationList({ isShow, setVisible, onClickOk }) {
     }
   };
   const handleChange = (e) => {
-    const locationId = e.target.closest('label').dataset?.locationId;
-    locationRef.current = locationId;
-    console.log('locationId', locationId);
+    const stationId = e.target.closest('label').dataset?.stationId;
+    const stationName = e.target.value;
+    const rgstDate = e.target.closest('label').dataset?.rgstDate;
+    stationRef.current = {
+      stationId: stationId,
+      stationName: stationName,
+      rgstDate: rgstDate,
+    };
   };
 
   const handleClose = () => {
@@ -33,7 +38,7 @@ function LocationList({ isShow, setVisible, onClickOk }) {
   };
   const handleOk = () => {
     setVisible(false);
-    onClickOk(true, locationRef.current);
+    onClickOk(true, stationRef.current);
   };
 
   return (
@@ -47,17 +52,18 @@ function LocationList({ isShow, setVisible, onClickOk }) {
       <DialogContent dividers>
         <RadioGroup
           ref={radioGroupRef}
-          aria-label="locations"
-          name="locations"
+          aria-label="stations"
+          name="stations"
           onChange={handleChange}
         >
-          {options.map(({ id, name }) => (
+          {options.map(({ stationId, stationName, rgstDate }) => (
             <FormControlLabel
-              value={name}
-              key={id}
+              value={stationName}
+              key={stationId}
               control={<Radio />}
-              label={name}
-              data-location-id={id}
+              label={stationName}
+              data-station-id={stationId}
+              data-rgst-date={rgstDate}
             />
           ))}
         </RadioGroup>
@@ -72,4 +78,4 @@ function LocationList({ isShow, setVisible, onClickOk }) {
   );
 }
 
-export default LocationList;
+export default StationList;
