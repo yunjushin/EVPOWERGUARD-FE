@@ -85,6 +85,13 @@ function Review() {
   const handleClickWriteReview = useCallback((params, event) => {
     setListVisible(true);
   });
+  const handleClickGetMyReview = useCallback((params, event) => {
+    const res = api.get('/myReview', { reviewerId: 'user01' });
+    if (res.status === 200 || res.status === 302) {
+      setReviewList();
+    }
+  });
+
   const handleSelectStation = useCallback((visible, stationData) => {
     setSelectedStation(stationData);
     setWritingVisible(visible);
@@ -123,12 +130,87 @@ function Review() {
         userName: 'user03',
         registDate: '20220512',
       },
+
+      {
+        id: '4',
+        stationName: 'station04',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user04',
+        registDate: '20220512',
+      },
+      {
+        id: '5',
+        stationName: 'station05',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user05',
+        registDate: '20220512',
+      },
+      {
+        id: '6',
+        stationName: 'station06',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user06',
+        registDate: '20220512',
+      },
+      {
+        id: '7',
+        stationName: 'station07',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user07',
+        registDate: '20220512',
+      },
+      {
+        id: '8',
+        stationName: 'station08',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user08',
+        registDate: '20220512',
+      },
+      {
+        id: '9',
+        stationName: 'station09',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user09',
+        registDate: '20220512',
+      },
+      {
+        id: '10',
+        stationName: 'station10',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user10',
+        registDate: '20220512',
+      },
+      {
+        id: '11',
+        stationName: 'station11',
+        content:
+          'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
+        rating: 3,
+        userName: 'user11',
+        registDate: '20220512',
+      },
     ];
     setReviewList(res);
     return res;
   };
 
   useEffect(() => {
+    // component 가 랜더링 될 때 실행되는 함수
+
     getReviewList();
   }, []);
   return (
@@ -146,6 +228,7 @@ function Review() {
       <div style={{ alignSelf: 'self-start', paddingLeft: '20px' }}>
         <h2>리뷰 조회</h2>
         <Button onClick={handleClickWriteReview}>새 리뷰 작성</Button>
+        <Button onClick={handleClickGetMyReview}>나의 리뷰 보기</Button>
       </div>
       <div style={{ height: 500, width: '100%' }}>
         <DataGrid
@@ -153,7 +236,7 @@ function Review() {
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          checkboxSelection
+          // checkboxSelection
           disableSelectionOnClick
           components={{
             Toolbar: CustomToolbar,

@@ -9,6 +9,10 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 const options = [
+  // const res = await api.get('/myStationList');
+  // if (res.status === 200 || res.status === 302) {
+  //   setMyStationList(res.data);
+  // }
   { stationId: 11111, stationName: 'supex station', rgstDate: '20220513' },
   { stationId: 22222, stationName: 'bundang station', rgstDate: '20220512' },
 ];

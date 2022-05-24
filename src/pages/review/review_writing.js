@@ -22,10 +22,11 @@ export default function ReviewWrite({ data, isShow, setVisible }) {
     setVisible(false, event);
   };
   const handleSave = (e) => {
+    console.log(rating);
     console.log(contentRef.current.value);
     console.log(data.stationId);
-    console.log(contentRef.current.value);
-    // api.post('/review', {stationId: data.stationId, rating: rating, content: contentRef})
+
+    // api.post('/registReview', {stationId: data.stationId, rating: rating, content: contentRef})
   };
   const handleChangeRating = useCallback(
     (event, newValue) => setRating(newValue),

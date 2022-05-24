@@ -20,7 +20,7 @@ export default function ReviewDetail({ data, isShow, setVisible }) {
 
   const handleDelete = () => {
     console.log(data.id);
-    //api.handleDelete('/review', { stationId: data.stationId });
+    // api.handleDelete('/deleteReview', { stationId: data.id });
   };
   const handleSave = () => {};
   return (
